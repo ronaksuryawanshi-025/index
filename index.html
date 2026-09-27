@@ -1,4 +1,16 @@
-<style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Performance Dashboard</title>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f6f8;
@@ -17,10 +29,10 @@
             width: 80%;
             max-width: 900px;
             margin: 30px auto;
-            background: white;
+            background-color: white;
             padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         h2 {
@@ -31,3 +43,74 @@
             margin-top: 20px;
         }
     </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Student Performance Dashboard</h1>
+        <p>Dynamic Subject-wise Marks</p>
+    </header>
+
+    <div class="container">
+
+        <h2>Student Marks</h2>
+
+        <canvas id="marksChart"></canvas>
+
+    </div>
+
+    <script>
+        const subjects = [
+            "DBMS",
+            "Data Structures",
+            "Java",
+            "Software Engineering",
+            "Discrete Mathematics"
+        ];
+
+        const marks = [82, 76, 88, 72, 80];
+
+        const ctx = document.getElementById("marksChart");
+
+        new Chart(ctx, {
+            type: "bar",
+
+            data: {
+                labels: subjects,
+
+                datasets: [{
+                    label: "Marks",
+                    data: marks,
+                    borderWidth: 1
+                }]
+            },
+
+            options: {
+                responsive: true,
+
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+
+                        title: {
+                            display: true,
+                            text: "Marks"
+                        }
+                    },
+
+                    x: {
+                        title: {
+                            display: true,
+                            text: "Subjects"
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
